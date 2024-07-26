@@ -1,0 +1,60 @@
+﻿@using Umbraco.Cms.Core.Models;
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Homepage>
+@{
+    Layout = "master.cshtml";
+    var model = Model;
+    //var newsItems = Model.Descendants<NewsPage>()
+    var news = Umbraco.ContentAtRoot()
+               .DescendantsOrSelf<NewsPage>()
+               .Where(x => x.IsVisible())
+               .OrderByDescending(x => x.Value<DateTime>("PublishedDate"))
+               .Take(6)
+               .ToList();
+}
+<section class="hero-banner">
+    <div class="hero-content">
+        <h1>Welcome to Football Stats and News</h1>
+        <p>Your source for the latest football updates and statistics</p>
+    </div>
+    <div class="hero-images">
+        <img src="./images/pexels-pixabay-2209.jpg" alt="" class="active">
+        <img src="./images/pexels-pixabay-50713.jpg" alt="">
+    </div>
+</section>
+<main>
+    <div class="content-wrapper">
+        <section class="news-grid">
+            <h2>Latest News</h2>
+            <div class="news-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                @* @await Html.GetBlockListHtmlAsync(Model.AddLatestNews) *@
+                @foreach (var content in news)
+                {
+
+                    <div class="news-item">
+                        <img src="@content.Newsimage?.GetCropUrl(width: 400, height: 300)" alt="@content.NewsTitle">
+                        <a href="@content.Url()">
+                            <h3>@content.NewsTitle</h3>
+                        </a>
+                        @* <p>@Html.Raw(content.FullContent)</p> *@
+                        <p>@content.PublishedDate.ToString("MMMM dd, yyyy")</p>
+                    </div>
+                }
+            </div>
+        </section>
+        <section class="photo-glider">
+            <div class="galleryphoto">
+             <h2>Photo Gallery</h2>
+             <div class="glider-container">
+                @await Html.GetBlockListHtmlAsync(Model.SelectgalleryImages)
+                @* <img src="@Model.Gallery1?.GetCropUrl()" alt="Gallery Image 1">
+                <img src="@Model.Gallery2?.GetCropUrl()" alt="Gallery Image 2">
+                <img src="@Model.Gallery3?.GetCropUrl()" alt="Gallery Image 3"> *@
+                <!-- Add more images as needed -->
+             </div>
+            </div>
+        </section>
+
+    </div>
+</main>

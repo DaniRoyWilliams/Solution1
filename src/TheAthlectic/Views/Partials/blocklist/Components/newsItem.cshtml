@@ -1,0 +1,16 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>;
+@using Umbraco.Extensions;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    var content = (ContentModels.NewsPage)Model.Content;
+    //var settings = (ContentModels.NewsItem)Model.Settings;
+}
+
+<!--Output the value of field with alias 'heading' from the Element Type selected as Content section-->
+<div class="news-item">
+    <img src="@content.Newsimage?.GetCropUrl(width: 400, height: 300)" alt="@content.NewsTitle">
+    <h3>@content.NewsTitle</h3>
+    <p>@Html.Raw(content.FullContent)</p>
+    <p>@content.PublishedDate.ToString("MMMM dd, yyyy")</p>
+</div>
+

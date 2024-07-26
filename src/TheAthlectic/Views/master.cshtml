@@ -1,0 +1,46 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportsTrack</title>
+    <link rel="stylesheet" href="~/styles.css">
+    <link rel="stylesheet" href="~/NewsFolder.css">
+    <link rel="stylesheet" href="~/NewsPage.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h3>SPORTSTRACK</h3>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="/contact-us/">Contact Us</a></li>
+                <li><a href="/news-folder/">News</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!--Body-->
+
+    @RenderBody()
+
+
+
+
+
+    <!--Footer-->
+    
+    <footer>
+        <p>&copy; 2024 Football Stats and News. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Forms.Web
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactUs>
+@using Umbraco.Extensions
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "master.cshtml";
+	var model = Model;
+	var form = Model.ContactUsForm;
+}
+<div>
+	<h1>@Model.ContactTitle</h1>
+	<img src="@Model.ContactImage?.GetCropUrl()">
+</div>
+<div>
+	@await Umbraco.RenderMacroAsync("renderUmbracoForm", new { FormGuid = form, FormTheme = "", ExcludeScripts = "1" })
+</div>

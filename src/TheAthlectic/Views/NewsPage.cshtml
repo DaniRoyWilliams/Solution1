@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsPage>
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "master.cshtml";
+    var model = Model;
+}
+<article class="newspage-article">
+  <h1 class="newspage-title">@Model.NewsTitle</h1>
+  <img class="newspage-image" src="@Model.Newsimage?.GetCropUrl()" />
+  <div class="newspage-content">@Html.Raw(Model.FullContent)</div>
+  <p class="newspage-date">@Model.PublishedDate.ToString("MMM dd, yyyy")</p>
+</article>

@@ -1,0 +1,72 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsFolder>
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Extensions;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+    Layout = "master.cshtml";
+    var model = Model;
+
+    // Search parameter
+    var searchQuery = Context.Request.Query["search"].ToString() ?? "";
+
+    // Pagination parameters
+    var pageNumber = int.TryParse(Context.Request.Query["page"], out var page) ? page : 1;
+    var pageSize = 10; // Number of items per page
+
+    // Fetch and filter news items
+    var newsItems = model.Children.OfType<ContentModels.NewsPage>();
+
+    // Search by title
+    if (!string.IsNullOrEmpty(searchQuery))
+    {
+        newsItems = newsItems.Where(x => x.NewsTitle.InvariantContains(searchQuery));
+    }
+
+    // Pagination
+    var totalItems = newsItems.Count();
+    var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+    var pagedNewsItems = newsItems.Skip((pageNumber - 1) * pageSize).Take(pageSize);
+}
+
+<div class="newsfolder-container">
+    <div class="newsfolder-controls">
+        <form method="get" action="" class="search-form">
+            <input type="text" name="search" placeholder="Search by title..." value="@searchQuery" class="search-input" />
+            <button type="submit" class="search-button">Search</button>
+        </form>
+    </div>
+
+    <div class="newsfolder-grid">
+        @if (!pagedNewsItems.Any())
+        {
+            <p>No news items found.</p>
+        }
+        else
+        {
+            @foreach (var newsItem in pagedNewsItems)
+            {
+                <div class="newsfolder-card">
+                    <a href="@newsItem.Url()">
+                        <img class="newsfolder-image" src="@newsItem.Newsimage?.GetCropUrl(width: 300, height: 200)">
+                        <h2 class="newsfolder-title">@newsItem.NewsTitle</h2>
+                        <p class="newsfolder-date">@newsItem.PublishedDate.ToString("MMM dd, yyyy")</p>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+
+    <div class="pagination-controls">
+        @if (totalPages > 1)
+        {
+            <ul class="pagination">
+                @for (var i = 1; i <= totalPages; i++)
+                {
+                    <li class="pagination-item @(i == pageNumber ? "active" : "")">
+                        <a href="?search=@searchQuery&page=@i" class="pagination-link">@i</a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
