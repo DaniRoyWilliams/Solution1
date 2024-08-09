@@ -1,4 +1,4 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using TheAthletic.models;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
 	Layout = null;
@@ -13,19 +13,50 @@
     <link rel="stylesheet" href="~/styles.css">
     <link rel="stylesheet" href="~/NewsFolder.css">
     <link rel="stylesheet" href="~/NewsPage.css">
+    <link rel="stylesheet" href="~/login.css">
+    <link rel="stylesheet" href="~/Register.css">
+    <link rel="stylesheet" href="~/aboutus.css">
 </head>
 <body>
     <header>
         <div class="logo">
             <h3>SPORTSTRACK</h3>
         </div>
+        @* <div>
+            <form asp-action="SearchContentNames" asp-controller="People" method="get">
+                <input type="text" placeholder="Search" name="query" />
+                <button>Search</button>
+            </form>
+        </div> *@
         <nav>
             <ul>
-                <li><a href="#about">About Us</a></li>
+                <li><a href="/about-us/">About Us</a></li>
                 <li><a href="/contact-us/">Contact Us</a></li>
                 <li><a href="/news-folder/">News</a></li>
+                <li><a href="/Search/">Search</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="dropdown">
+                        <span class="dropdown-toggle">Hello, @User.Identity.Name</span>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <form asp-action="Logout" asp-controller="Account" method="post">
+                                    <button type="submit" class="dropdown-item">Log out</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                }
+                else
+                {
+                    <li><a href="/LoginPage/">Login</a></li>
+                    <li><a href="/RegisterPage/">Register</a></li>
+                }
             </ul>
         </nav>
+
+
+
     </header>
     <!--Body-->
 

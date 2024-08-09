@@ -95,20 +95,28 @@ main {
 .content-wrapper {
     display: flex;
     gap: 2rem;
+    flex-wrap: wrap; /* Ensure that items wrap */
 }
 
 .news-grid {
     flex: 1;
+    min-width: 300px; /* Adjust this value as needed */
 }
 
-.news-row {
-    display: flex;
+    .news-grid h2, .photo-glider h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+/* News Grid Styles */
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensure three items per row */
     gap: 1rem;
-    margin-bottom: 1rem;
+    padding: 1rem 0;
 }
 
 .news-item {
-    flex: 1;
     background-color: #f4f4f4;
     padding: 1rem;
     border-radius: 5px;
@@ -122,38 +130,18 @@ main {
         margin-bottom: 0.5rem;
     }
 
-/* Updated photo-glider styles */
-.photo-glider {
-    margin: 2rem 0;
-    padding: 1rem;
-    background-color: #f8f8f8;
-    flex: 1;
-}
-
-    .photo-glider h2 {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
+/* Photo Glider Styles */
 .glider-container {
-    
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ensure three items per row */
     gap: 1rem;
     padding: 1rem 0;
 }
 
-    .glider-container::-webkit-scrollbar {
-        display: none;
-    }
-
     .glider-container > div {
-        flex: 0 0 auto;
-        width: 200px;
-        scroll-snap-align: start;
+        background-color: #f4f4f4;
+        padding: 1rem;
+        border-radius: 5px;
     }
 
     .glider-container img {
@@ -170,6 +158,9 @@ main {
         text-align: center;
         color: #333;
     }
+    .photo-glider{
+        flex: 1;
+    }
 
 /* Footer styles */
 footer {
@@ -178,7 +169,49 @@ footer {
     text-align: center;
     padding: 1rem;
 }
-.galleryphoto{
-    display: flex;
-
+/* Dropdown styles */
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
 }
+
+.dropdown-toggle {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0;
+    top: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    color: #fff;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+    .dropdown-item:hover {
+        background-color: #555;
+    }

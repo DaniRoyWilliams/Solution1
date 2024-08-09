@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheAthlectic", "src\TheAthlectic\TheAthlectic.csproj", "{A4123A41-73C9-4F31-B908-47BB2B95E581}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheAthlectic", "src\TheAthlectic\TheAthlectic.csproj", "{A4123A41-73C9-4F31-B908-47BB2B95E581}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheAthletic.core", "src\TheAthletic.core\TheAthletic.core.csproj", "{A1EB66AB-8E85-4CD9-BBF8-7B4AB8769C1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheAthletic.models", "src\TheAthletic.models\TheAthletic.models.csproj", "{007236A1-5349-409A-8880-003D74D9E104}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A4123A41-73C9-4F31-B908-47BB2B95E581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4123A41-73C9-4F31-B908-47BB2B95E581}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4123A41-73C9-4F31-B908-47BB2B95E581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1EB66AB-8E85-4CD9-BBF8-7B4AB8769C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1EB66AB-8E85-4CD9-BBF8-7B4AB8769C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1EB66AB-8E85-4CD9-BBF8-7B4AB8769C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1EB66AB-8E85-4CD9-BBF8-7B4AB8769C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007236A1-5349-409A-8880-003D74D9E104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007236A1-5349-409A-8880-003D74D9E104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007236A1-5349-409A-8880-003D74D9E104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007236A1-5349-409A-8880-003D74D9E104}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

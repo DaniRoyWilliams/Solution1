@@ -1,4 +1,12 @@
+using TheAthletic.Controllers;
+using TheAthletic.core.Interfaces;
+using TheAthletic.core.Services;
+using Umbraco.Cms.Core.Services;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+
+
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()
@@ -8,6 +16,7 @@ builder.CreateUmbracoBuilder()
     .Build();
 
 WebApplication app = builder.Build();
+
 
 await app.BootUmbracoAsync();
 

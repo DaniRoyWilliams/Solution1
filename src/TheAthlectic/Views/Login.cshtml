@@ -1,0 +1,8 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using TheAthletic.core.Models.Account;
+@{
+    Layout = "master.cshtml";
+}
+
+@await Html.PartialAsync("~/Views/Account/Login.cshtml", new LoginViewModel())

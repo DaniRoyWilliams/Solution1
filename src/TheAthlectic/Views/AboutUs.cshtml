@@ -1,9 +1,15 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using TheAthletic.models
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.AboutUs>
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = TheAthletic.models;
 @{
 	Layout = "master.cshtml";
 	var model = Model;
 }
-<h2>@Model.Title</h2>
-<p>@Model.Bodytextaboutus</p>
+
+ 
+<div class="about-us-container">
+    <h1 class="animated-title">@Model.Title</h1>
+    <div class="animated-bodytext">
+        <p>@Model.Bodytextaboutus</p>
+    </div>
+</div>

@@ -1,8 +1,8 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactUs>
+@using TheAthletic.models
 @using Umbraco.Forms.Web
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ContactUs>
 @using Umbraco.Extensions
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = TheAthletic.models;
 @{
 	Layout = "master.cshtml";
 	var model = Model;

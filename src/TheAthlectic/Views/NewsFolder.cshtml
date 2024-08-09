@@ -1,9 +1,14 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsFolder>
-@using Umbraco.Cms.Web.Common.PublishedModels;
+@using TheAthletic.models
 @using Umbraco.Extensions;
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = TheAthletic.models;
 @{
     Layout = "master.cshtml";
+
+    if (!User.Identity.IsAuthenticated)
+    {
+        Context.Response.Redirect("/Loginpage/");
+    }
     var model = Model;
 
     // Search parameter

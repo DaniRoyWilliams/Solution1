@@ -1,0 +1,35 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using TheAthletic.core.Models.Account
+@{
+	Layout = "master.cshtml";
+	var searchViewModel = (SearchViewModel)ViewData["SearchResults"];
+}
+<h2>Search</h2>
+
+<form asp-action="Index" method="get" asp-controller="Search">
+    <div class="input-group">
+        <input type="text" id="query" name="query" value="@(searchViewModel?.Query ?? "")" placeholder="Search..." class="form-control" required />
+    </div>
+    <button type="submit" class="search-button">Search</button>
+</form>
+
+@if (searchViewModel != null && searchViewModel.HasSearched)
+{
+    if (searchViewModel.SearchResults.Any())
+    {
+        <h3>Results for "@searchViewModel.Query"</h3>
+        <ul>
+            @foreach (var result in searchViewModel.SearchResults)
+            {
+                <li>
+                    <h4><a href="@result.Url">@result.Name</a></h4>
+                    <p>@result.Excerpt</p>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No results found for "@searchViewModel.Query"</p>
+    }
+}

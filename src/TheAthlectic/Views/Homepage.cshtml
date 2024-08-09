@@ -1,5 +1,5 @@
 ﻿@using Umbraco.Cms.Core.Models;
-@using Umbraco.Cms.Web.Common.PublishedModels;
+@using TheAthletic.models
 @using Umbraco.Extensions
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Homepage>
 @{
@@ -44,17 +44,12 @@
             </div>
         </section>
         <section class="photo-glider">
-            <div class="galleryphoto">
-             <h2>Photo Gallery</h2>
-             <div class="glider-container">
+            <h2>Photo Gallery</h2>
+            <div class="glider-container">
                 @await Html.GetBlockListHtmlAsync(Model.SelectgalleryImages)
-                @* <img src="@Model.Gallery1?.GetCropUrl()" alt="Gallery Image 1">
-                <img src="@Model.Gallery2?.GetCropUrl()" alt="Gallery Image 2">
-                <img src="@Model.Gallery3?.GetCropUrl()" alt="Gallery Image 3"> *@
-                <!-- Add more images as needed -->
-             </div>
             </div>
         </section>
+
 
     </div>
 </main>

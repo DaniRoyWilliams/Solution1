@@ -4,6 +4,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\aboutus.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\login.css" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms" Version="13.4.0" />
@@ -12,14 +16,15 @@
   <ItemGroup>
     <!-- Opt-in to app-local ICU to ensure consistent globalization APIs across different platforms -->
     <PackageReference Include="Microsoft.ICU.ICU4C.Runtime" Version="72.1.0.3" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="13.4.0" />
+    <PackageReference Include="Umbraco.Cms.Examine.Lucene" Version="13.4.0" />
     <PackageReference Include="Umbraco.Forms" Version="13.1.2" />
     <RuntimeHostConfigurationOption Include="System.Globalization.AppLocalIcu" Value="72.1.0.3" Condition="$(RuntimeIdentifier.StartsWith('linux')) or $(RuntimeIdentifier.StartsWith('win')) or ('$(RuntimeIdentifier)' == '' and !$([MSBuild]::IsOSPlatform('osx')))" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Models\Pagemodels\" />
+    <ProjectReference Include="..\TheAthletic.core\TheAthletic.core.csproj" />
+    <ProjectReference Include="..\TheAthletic.models\TheAthletic.models.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
